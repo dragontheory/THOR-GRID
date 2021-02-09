@@ -1,0 +1,225 @@
+/* 
+SCROLL TO TOP 
+https://codepen.io/dragontheory/pen/poNyWmv
+
+*/
+html {scroll-behavior: smooth;}
+body {position: relative;}
+.scrolltop-wrap {
+  box-sizing: border-box;
+  position: absolute;
+  top: 12rem;
+  right: 2rem;
+  bottom: 0;
+  pointer-events: none;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.scrolltop-wrap #scrolltop-bg {fill: #007bff;}
+.scrolltop-wrap #scrolltop-arrow {fill: white;}
+.scrolltop-wrap a:hover #scrolltop-bg {fill: #2990ff;}
+.scrolltop-wrap a:hover #scrolltop-arrow {fill: white;}
+@supports (-moz-appearance: meterbar) {.scrolltop-wrap {clip: rect(0, 3rem, auto, 0);}}
+.scrolltop-wrap a {
+  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -5rem;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: -5rem;
+  transform: translateY(100vh);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: all;
+  outline: none;
+  overflow: hidden;
+}
+.scrolltop-wrap a svg {
+  display: block;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+.scrolltop-wrap a svg path {transition: all 0.1s;}
+.scrolltop-wrap a #scrolltop-arrow {
+  transform: scale(0.66);
+  transform-origin: center;
+}
+@media print {.scrolltop-wrap {display: none !important;}}
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+html::before {
+  content: "";
+  display: block;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: -5px;
+  bottom: 0;
+  left: -5px;
+  background: url("https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260") center center no-repeat;
+  background-size: cover;
+  filter: brightness(1.14) blur(2px);
+}
+body {
+  font-family: "Raleway", sans-serif;
+  max-width: 40rem;
+  margin: 0 auto;
+  color: black;
+  line-height: 2;
+  background: transparent;
+  text-align: center;
+}
+.container {
+  position: relative;
+  padding: 2rem 2rem 6rem;
+}
+h1, h2, h3, p {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.intro {font-size: 1.16rem;}
+.intro a:hover {text-decoration: underline;}
+#dummy-content p {
+  display: inline;
+  background: rgba(0, 0, 0, 0.12);
+  color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-radius: 2px;
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+}
+#dummy-content p + p:before {
+  visibility: hidden;
+  content: ".";
+  display: block;
+}
+label {
+  display: inline-block;
+  float: left;
+  margin-right: -1px;
+  padding: 0.4rem 0.9rem 0.6rem;
+  border: 1px solid rgba(178, 183, 187, 0.99);
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  transition: all 0.1s;
+  font-size: 96%;
+  font-weight: 600;
+  width: 50%;
+}
+label span {
+  font-size: 0.86rem;
+  line-height: 1.33rem;
+  display: block;
+  font-weight: 400;
+}
+label[for=dummy-content-toggle] {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+label[for=fallback-toggle] {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+label:hover {
+  color: #1e8aff;
+  border-color: #a2a8ad;
+}
+input[type=checkbox] {display: none;}
+input#dummy-content-toggle:checked ~ #dummy-content {display: none;}
+input#dummy-content-toggle:checked ~ div label[for=dummy-content-toggle] {
+  background: #1e8aff;
+  border-color: #1e8aff;
+  color: white;
+}
+input#fallback-toggle:checked ~ .scrolltop-wrap a {position: fixed;}
+input#fallback-toggle:checked ~ div label[for=fallback-toggle] {
+  background: #1e8aff;
+  border-color: #1e8aff;
+  border-left-color: #ddd;
+  color: white;
+}
+a {color: #1e8aff;}
+ul {margin-top: -1rem;}
+
+@media screen and (max-width: 721px) {
+  html {font-size: 84%;}
+  html::before {background: #eff0f2;}
+  .container {padding: 1rem 1.5rem 2rem;}
+  h1 {font-size: 2.2rem;}
+  h3 {font-size: 1.5rem;}
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+
+/* HTML
+<div class="container">
+  <h1>Pure CSS Scroll To Top</h1>
+  <div class="intro">
+    <p>
+      <strong>A CSS-only solution to reveal a scroll-to-top link on scrolling down the page + animated scroll back to top.</strong>
+    </p>
+    <p>Uses <a href="https://caniuse.com/#search=position%3Asticky" target="_blank">position: sticky</a></em> for reveal, <a href="https://caniuse.com/#search=scroll-behavior" target="_blank">scroll-behavior</a></em> for animated scroll and position: fixed fallback (button is always visible).
+    </p>
+  </div>
+  <input type="checkbox" id="dummy-content-toggle">
+  <input type="checkbox" id="fallback-toggle" onchange="this.checked ? document.documentElement.style.scrollBehavior = 'auto' : document.documentElement.removeAttribute('style');">
+  <div class="clearfix">
+    <label for="dummy-content-toggle">
+    Toggle Page Height
+    <span>Hide the button if page content<br>
+      is smaller than the viewport</span>
+  </label>
+    <label for="fallback-toggle">
+    Disable Browser Support
+    <span>Button is visible in a<br>
+      fixed position, no animation</span>
+  </label>
+  </div>
+  <div id="dummy-content">
+    <h3>Scroll down &#8595;</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+      in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h3>No JavaScript...</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+      in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h3>...less CPU burden.</h3>
+    <p>Consectetur non proident adipisicing elit, sed non proident do eiusmod tempor incididunt ut labore sdfsdsd sdf et dolore magna aliqua. Duis aute irure dolor in reprehenderit in sdsdfsdf voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+      sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+      Lorem ipsum dolor sit amet, consectetur non proident adipisicing elit, sed non proident do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+  <div class="scrolltop-wrap">
+    <a href="#" role="button" aria-label="Scroll to top">
+        <svg height="48" viewBox="0 0 48 48" width="48" height="48px" xmlns="http://www.w3.org/2000/svg">
+            <path id="scrolltop-bg" d="M0 0h48v48h-48z"></path>
+            <path id="scrolltop-arrow" d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"></path>
+        </svg>
+    </a>
+  </div>
+</div>
+*/
