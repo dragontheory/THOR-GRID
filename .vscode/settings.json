@@ -4,8 +4,8 @@
         "scelerisque"
     ],
     "workbench.colorCustomizations": {
-        "activityBar.background": "#2F2E1A",
+/*         "activityBar.background": "#2F2E1A",
         "titleBar.activeBackground": "#424125",
-        "titleBar.activeForeground": "#FBFBF7"
+        "titleBar.activeForeground": "#FBFBF7" */
     }
 }
