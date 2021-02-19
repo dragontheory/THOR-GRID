@@ -53,7 +53,9 @@ h1,h2,h3,h4,h5,p {padding: 0 20px;}
     overflow-y: hidden;
  }
 /* .main {grid-template-columns: 300px 300px 1fr 1fr 300px;} */
-
+.results {
+    resize: horizontal;
+}
 section {
     overflow-y: auto;
     background-color: rgba(0,0,0,0.2);
