@@ -1,0 +1,84 @@
+ /* 
+ https://medium.com/@beyondborders/beginner-css-grid-sticky-navigation-scrolling-content-7c4de0a8d1dc 
+ https://css-tricks.com/the-holy-grail-layout-with-css-grid/
+ https://codepen.io/dragontheory/pen/XWNjLeX 
+*/
+*, ::after, ::before {box-sizing: border-box;}
+body {
+    overflow: hidden; 
+    margin: 0;
+    padding: 0;
+    background-color: #01406479;
+    background: -webkit-radial-gradient(#1c4f74, #010305);
+    background: radial-gradient(#1c4f74, #02060a);
+    color: rgba(255,255,255,0.5);
+    font-family: Calibri;
+    font-size: 20px;
+}
+.header { grid-area: header; }
+.home { grid-area: home; }
+.nav { grid-area: nav; }
+.results { grid-area: results; }
+.profile { grid-area: profile; }
+.details { grid-area: details; }
+.footer { grid-area: footer; }
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 300px 1fr 1fr 300px;
+    grid-template-areas:
+    'header header header header header'
+    'home nav results profile details'
+    'footer footer footer footer footer';
+}
+.header, .footer {background-color: rgba(255,255,255, 0.05);}
+h1,h2,h3,h4,h5,p {padding: 0 20px;}
+.header,
+.home,
+.nav,
+.results,
+.profile,
+.details,
+.footer {border: 1px solid rgba(255,255,255,0.1);}
+
+.home,
+.nav,
+.results,
+.profile,
+.details {
+    display: grid;
+    overflow-y: hidden;
+ }
+/* .main {grid-template-columns: 300px 300px 1fr 1fr 300px;} */
+
+section {
+    overflow-y: auto;
+    background-color: rgba(0,0,0,0.2);
+}
+/* https://css-tricks.com/the-holy-grail-layout-with-css-grid/ */
+@media (max-width: 600px) {
+    .container {
+       grid-template-columns: 100%;
+       grid-template-rows: auto;
+    }
+    .container > * {
+       grid-column: 1/-1 !important;
+       grid-row: auto !important;
+    }
+}
+/* https://codepen.io/dragontheory/pen/JjbKpgE */
+/* CUSTOM SCROLL BARS */
+/* Firefox v.64*/
+section {
+    scrollbar-color: rgba(255,255,255,0.1) rgba(0, 0, 0, 0); /*thumb track*/
+    scrollbar-width: thin; /* auto|thin|none */
+    transition: all 250ms;
+  }
+/* Chrome */
+section::-webkit-scrollbar {width: 6px;}
+/* Chrome Scroll Track */
+section::-webkit-scrollbar-track {background-color: rgba(0, 0, 0, 0);}
+section::-webkit-scrollbar-thumb {background-color: rgba(255,255,255,0.1);}
